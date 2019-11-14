@@ -3,21 +3,21 @@
 <body>
     <div>
         <form method ="post">
-            <input type="text" name="text" placeholder="Введите название товара" />
+            <input type="text" name="name" placeholder="Введите название товара" />
             <input type="text" name="description" placeholder="Описание">
             <button type="submit">Добавить</button>
         </form>
     </div>
     <div>Список заказов</div>
-<!--    <form method="post" action="filter">-->
-<!--        <input type="text" name="filter">-->
-<!--        <button type="submit">Поиск</button>-->
-<!--    </form>-->
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Поиск</button>
+    </form>
     {{#orders}}
     <div>
         <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
+        <span>{{name}}</span>
+        <i>{{description}}</i>
     </div>
     {{/orders}}
 </body>

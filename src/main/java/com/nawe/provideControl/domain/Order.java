@@ -1,25 +1,23 @@
 package com.nawe.provideControl.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="ordr")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String tag;
+    private String description;
 
     public Order() {
     }
 
-    public Order(String name, String tag) {
+    public Order(String name, String description) {
         this.name = name;
-        this.tag = tag;
+        this.description = description;
     }
 
     public void setId(Integer id) {
@@ -38,11 +36,11 @@ public class Order implements Serializable {
         this.name = name;
     }
 
-    public String getTag() {
-        return tag;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
