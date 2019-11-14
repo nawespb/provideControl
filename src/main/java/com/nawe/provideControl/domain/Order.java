@@ -4,22 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-
     private Integer id;
     private String name;
-    private String description;
+    private String tag;
 
-    public Integer getId() {
-        return id;
+    public Order() {
+    }
+
+    public Order(String name, String tag) {
+        this.name = name;
+        this.tag = tag;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,11 +38,11 @@ public class Order {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTag() {
+        return tag;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }
