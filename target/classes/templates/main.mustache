@@ -2,23 +2,33 @@
 <html>
 <body>
     <div>
-        <form method ="post">
-            <input type="text" name="text" placeholder="Введите название товара" />
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div>
+        <form method="post">
+            <input type="text" name="name" placeholder="Введите название товара"/>
             <input type="text" name="description" placeholder="Описание">
+            <input type="text" name="count" placeholder="Количество">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
             <button type="submit">Добавить</button>
         </form>
     </div>
     <div>Список заказов</div>
-<!--    <form method="post" action="filter">-->
-<!--        <input type="text" name="filter">-->
-<!--        <button type="submit">Поиск</button>-->
-<!--    </form>-->
+    <form method="post" action="filter">
+        <input type="text" name="filter">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Поиск</button>
+    </form>
     {{#orders}}
-    <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
-    </div>
+        <div>
+            <b>{{id}}</b>
+            <span>{{name}}</span>
+            <i>{{description}}</i>
+            <i>{{count}}</i>
+        </div>
     {{/orders}}
 </body>
 </html>

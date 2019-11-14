@@ -1,4 +1,4 @@
-package com.nawe.provideControl;
+package com.nawe.provideControl.controller;
 
 import com.nawe.provideControl.domain.Order;
 import com.nawe.provideControl.repository.OrderRepository;
@@ -8,37 +8,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World!") String name, Map<String, Object> model) {
-        model.put("name", name);
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Order> orders = orderRepository.findAll();
         model.put("orders", orders);
         return "main";
     }
 
-    @PostMapping
-    public String add(@RequestParam String name, @RequestParam String description, Map<String, Object> model) {
-        Order orr = new Order(name, description);
+    @PostMapping("/main")
+    public String add(@RequestParam String name, @RequestParam String description, @RequestParam Integer count, Map<String, Object> model) {
+        Order orr = new Order(name, description, count);
         orderRepository.save(orr);
         Iterable<Order> orders = orderRepository.findAll();
         model.put("orders", orders);
         return "main";
     }
 
-    @PostMapping("filter")
+    @PostMapping("/filter")
     public String filter(@RequestParam String filter, Map<String, Object> model) {
         Iterable<Order> orders;
 

@@ -11,13 +11,15 @@ public class Order implements Serializable {
     private Integer id;
     private String name;
     private String description;
+    private Integer count;
 
     public Order() {
     }
 
-    public Order(String name, String description) {
+    public Order(String name, String description, Integer count) {
         this.name = name;
         this.description = description;
+        this.count = count;
     }
 
     public void setId(Integer id) {
@@ -42,5 +44,13 @@ public class Order implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }
