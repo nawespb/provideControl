@@ -16,7 +16,8 @@ public class RegistrationController {
     @Autowired
     private UserRepository userRepository;
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(Map<String, Object> model) {
+        model.put("message", "Insert username and password");
         return "registration";
     }
 
