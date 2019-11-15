@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
-    List<Order> findByName(String name);
+    List<Order> findByName (String name);
 
 }

@@ -13,13 +13,22 @@ public class Order implements Serializable {
     private String description;
     private Integer count;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
     public Order() {
     }
 
-    public Order(String name, String description, Integer count) {
+    public Order(String name, String description, Integer count, User user) {
         this.name = name;
         this.description = description;
         this.count = count;
+        this.author = user;
+    }
+
+    public String getAuthorName () {
+        return author != null ? author.getUsername() : "none";
     }
 
     public void setId(Integer id) {
@@ -53,4 +62,13 @@ public class Order implements Serializable {
     public void setCount(Integer count) {
         this.count = count;
     }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
 }
