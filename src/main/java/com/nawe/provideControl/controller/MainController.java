@@ -43,7 +43,7 @@ public class MainController {
     @PostMapping("/main")
     public String add(@AuthenticationPrincipal User user,
                       @RequestParam (required = true) String name,
-                      @RequestParam (required = false, defaultValue = "") String description,
+                      @RequestParam (required = false, defaultValue = " ") String description,
                       @RequestParam (required = false, defaultValue = "0") Integer count,
                       @RequestParam (required = false, defaultValue = "1900-01-01") String date,
                       Map<String, Object> model) throws ParseException {
