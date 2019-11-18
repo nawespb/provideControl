@@ -8,6 +8,10 @@
             <input type="text" name="name" placeholder="Введите название товара"/>
             <input type="text" name="description" placeholder="Описание">
             <input type="text" name="count" placeholder="Количество">
+            <p>
+                <label for="date">Дата закупки: </label>
+                <input type="date" id="date" name="date"/>
+            </p>
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit">Добавить</button>
         </form>
@@ -25,6 +29,7 @@
             <span><i>Название: </i><b>${order.name}</b></span>
             <i>Описание: </i><b>${order.description}</b>
             <i>Количество: </i><b>${order.count}</b>
+            <i>Дата расхода: </i><b>${order.printDate()}</b>
         </div>
     <#else>
         No orders...
