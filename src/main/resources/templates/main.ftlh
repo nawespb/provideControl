@@ -3,6 +3,7 @@
 
 <@c.page>
     <@l.logout/>
+    <span><a href="/user">Users list</a></span>
     <div style='margin-bottom: 10px;'>
         <form method="post">
             <input type="text" name="name" placeholder="Введите название товара"/>
