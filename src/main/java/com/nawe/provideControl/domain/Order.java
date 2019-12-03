@@ -16,6 +16,7 @@ public class Order implements Serializable {
     private String description;
     private Integer count;
     private Date date;
+    private String filename;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -88,4 +89,11 @@ public class Order implements Serializable {
         return new SimpleDateFormat("dd.mm.yyyy").format(date);
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 }

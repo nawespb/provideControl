@@ -1,38 +1,60 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/login.ftlh" as l>
 
 <@c.page>
-    <@l.logout/>
-    <span><a href="/user">Users list</a></span>
-    <div style='margin-bottom: 10px;'>
-        <form method="post">
-            <input type="text" name="name" placeholder="Введите название товара"/>
-            <input type="text" name="description" placeholder="Описание">
-            <input type="text" name="count" placeholder="Количество">
-            <p>
-                <label for="date">Дата закупки: </label>
-                <input type="date" id="date" name="date"/>
-            </p>
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <button type="submit">Добавить</button>
-        </form>
-    </div>
-    <div style='margin-bottom: 5px;'>Список заказов</div>
-    <div style='margin-bottom: 10px;'>
-        <form method="get" action="/main">
-            <input type="text" name="filter" value="${filter!""}">
-            <button type="submit">Поиск</button>
-        </form>
-    </div>
-    <#list orders as order>
-        <div>
-            <strong>${order.authorName}: </strong>
-            <span><i>Название: </i><b>${order.name}</b></span>
-            <i>Описание: </i><b>${order.description}</b>
-            <i>Количество: </i><b>${order.count}</b>
-            <i>Дата расхода: </i><b>${order.printDate()}</b>
+
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <form method="get" action="/main" class="form-inline">
+                <input type="text" name="filter" class="form-control" value="${filter?ifExists}"
+                       placeholder="Поиск по названию">
+                <button type="submit" class="btn btn-primary ml-2">Поиск</button>
+            </form>
         </div>
-    <#else>
-        No orders...
-    </#list>
+    </div>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+        Добавить новый заказ
+    </a>
+    <div class="collapse" id="collapseExample">
+        <div class="form-group">
+            <form method="post" enctype="multipart/form-data">
+                <input type="text" name="name" class="form-control" placeholder="Введите название товара"/>
+                <input type="text" name="description" class="form-control" placeholder="Описание">
+                <input type="text" name="count" class="form-control" placeholder="Количество">
+                <p>
+                    <label for="date">Дата закупки: </label>
+                    <input type="date" id="date" name="date" class="form-control"/>
+                </p>
+                <div class="custom-file">
+                    <input type="file" name="file" class="form-control" id="customfile">
+                    <label class="custom-file-label" for="customfile">Выберите файл</label>
+                </div>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card-columns">
+        <#list orders as order>
+            <div class="card my-3">
+                <div class="card-footer text-muted">
+                    <strong>${order.authorName}: </strong>
+                </div>
+                <div class="m-2">
+                    <span><i>Название: </i><b>${order.name}</b></span>
+                    <i>Описание: </i><b>${order.description}</b>
+                    <i>Количество: </i><b>${order.count}</b>
+                    <i>Дата расхода: </i><b>${order.printDate()}</b>
+                </div>
+                <div class="card-img-top m-2">
+                    <#if order.filename??>
+                        <img src="/img/${order.filename}">
+                    </#if>
+                </div>
+            </div>
+        <#else>
+            No orders...
+        </#list>
+    </div>
 </@c.page>
