@@ -14,9 +14,9 @@
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <#if !isRegisterForm>
-            <a href="/registration">Создать нового пользователя</a>
+            <a class="btn btn-primary" href="/registration" role="button">Создать нового пользователя</a>
         </#if>
-        <button type="submit" class="btn btn-primary"/><#if isRegisterForm>Создать<#else>Sign In</#if></button>
+        <button type="submit" class="btn btn-primary"/><#if isRegisterForm>Создать<#else>Войти</#if></button>
     </form>
 </#macro>
 
@@ -24,7 +24,7 @@
     <p>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-primary"/>Sign out</button>
+        <button type="submit" class="btn btn-primary"/>Выход</button>
     </form>
     </p>
 </#macro>

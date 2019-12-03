@@ -1,7 +1,7 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    Users:
+    Список пользователей:
 
     <table>
         <thead>

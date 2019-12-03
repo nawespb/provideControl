@@ -18,19 +18,19 @@
     <div class="collapse" id="collapseExample">
         <div class="form-group">
             <form method="post" enctype="multipart/form-data">
-                <input type="text" name="name" class="form-control" placeholder="Введите название товара"/>
-                <input type="text" name="description" class="form-control" placeholder="Описание">
-                <input type="text" name="count" class="form-control" placeholder="Количество">
+                <input type="text" name="name" class="form-control mt-1" placeholder="Введите название товара"/>
+                <input type="text" name="description" class="form-control mt-1" placeholder="Описание">
+                <input type="text" name="count" class="form-control mt-1" placeholder="Количество">
                 <p>
-                    <label for="date">Дата закупки: </label>
-                    <input type="date" id="date" name="date" class="form-control"/>
+                    <label for="date" class="mt-1">Дата закупки: </label>
+                    <input type="date" id="date" name="date" class="form-control mt-1"/>
                 </p>
                 <div class="custom-file">
                     <input type="file" name="file" class="form-control" id="customfile">
                     <label class="custom-file-label" for="customfile">Выберите файл</label>
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary mt-2">Добавить</button>
             </form>
         </div>
     </div>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         <#else>
-            No orders...
+            Заказов не обнаружено...
         </#list>
     </div>
 </@c.page>
